@@ -30,15 +30,15 @@ var questions = [
 
 // this code run whan page finish load
 document.addEventListener("DOMContentLoaded", function () {
-  var video = document.querySelector(".video");
-  var buttonContainer = document.querySelector(".button-container");
-  var questionContainer = document.getElementById("question-container");
-  var quiz = document.querySelector(".quiz");
-  var answerContainer = document.getElementById("answers");
-  var feedbackElement = document.getElementById("feedback");
-  var progressElement = document.getElementById("progress");
-  var scoreElement = document.getElementById("score");
-  var nextButton = document.getElementById("next-button");
+  const video = document.querySelector(".video");
+  const buttonContainer = document.querySelector(".button-container");
+  const questionContainer = document.getElementById("question-container");
+  const quiz = document.querySelector(".quiz");
+  const answerContainer = document.getElementById("answers");
+  const feedbackElement = document.getElementById("feedback");
+  const progressElement = document.getElementById("progress");
+  const scoreElement = document.getElementById("score");
+  const nextButton = document.getElementById("next-button");
 
   //questions index and score
   var currentQuestionIndex = 0;
@@ -50,16 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
       answerContainer.removeChild(answerContainer.lastChild);
     }
     clearFeedback();
-    var currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = questions[currentQuestionIndex];
     questionContainer.textContent = currentQuestion.question;
     answerContainer.innerHTML = "";
 
     currentQuestion.answers.forEach(function (answer) {
-      var li = document.createElement("li");
+      const li = document.createElement("li");
       li.textContent = answer;
       li.addEventListener("click", function () {
-        var selectedAnswer = this.textContent;
-        var isCorrect = checkAnswer(selectedAnswer);
+        const selectedAnswer = this.textContent;
+        const isCorrect = checkAnswer(selectedAnswer);
         displayFeedback(isCorrect);
         disableAnswerButtons();
         updateScore(isCorrect);
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // disable mounse event
   function disableAnswerButtons() {
-    var answerButtons = document.querySelectorAll("#answers li");
+    const answerButtons = document.querySelectorAll("#answers li");
     answerButtons.forEach(function (button) {
       button.style.pointerEvents = "none";
     });
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkAnswer(selectedAnswer) {
-    var currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = questions[currentQuestionIndex];
 
     return selectedAnswer === currentQuestion.correctAnswer;
   }
